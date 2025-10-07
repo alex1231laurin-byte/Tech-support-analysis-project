@@ -12,7 +12,6 @@ public class WordCounter
 {
     // Associate each word with a count.
     private final HashMap<String, Integer> counts;
-    private Responder responseMap;
 
     /**
      * Create a WordCounter
@@ -20,7 +19,6 @@ public class WordCounter
     public WordCounter()
     {
         counts = new HashMap<>();
-        responseMap = new Responder();
     }
     
     /**
@@ -31,15 +29,14 @@ public class WordCounter
     {
         for(String word : input) {
             int counter = counts.getOrDefault(word, 0);
-            counts.put(word, counter + 1);
+            Integer count = new Integer(counter + 1);
+            counts.put(word, count);
         }
     }
     public void printWordCount(){
         Set<String> words = counts.keySet();
         for(String word : words){
-            if(responseMap.get(word)==null){
-                System.out.println(word + ": " + counts.get(words));
-            }
+                System.out.println(word + ": " + counts.get(word));
         }
     }
 }
